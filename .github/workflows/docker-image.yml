@@ -3,7 +3,7 @@ name: Create release with docker
 on:
   workflow_dispatch:
     inputs: 
-      version:
+      branch:
         description: "Branch to pull"
         required: true
         default: "testing"
@@ -39,7 +39,7 @@ jobs:
       -
         id: modify
         name: Modify scripts and get version
-        run: ./modify.sh 
+        run: ./modify.sh ${{github.event.inputs.branch}}
 
       - 
         name: Build and push
