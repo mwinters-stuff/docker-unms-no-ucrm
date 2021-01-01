@@ -39,7 +39,7 @@ jobs:
       -
         id: modify
         name: Modify scripts and get version
-        run: ./build.sh 
+        run: ./modify.sh 
 
       - 
         name: Build and push
