@@ -40,7 +40,7 @@ jobs:
         id: modify
         name: Modify scripts and get version
         run: |
-          output=$(./modify.sh ${{github.event.inputs.branch}} | grep 'unms_version')
+          output=$(./modify.sh ${{github.event.inputs.branch}})
           output="${output:12}"
           echo ::set-output name=unms_version::$output
       -
