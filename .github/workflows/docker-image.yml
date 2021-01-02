@@ -39,7 +39,7 @@ jobs:
       -
         id: modify
         name: Modify scripts and get version
-        run: ./modify.sh ${{github.event.inputs.branch}}
+        run: echo ::set-output name=unms_version::$(./modify.sh ${{github.event.inputs.branch}} | grep 'unms_version' | cut -d '=' -f 2)
 
       - 
         name: Build and push
