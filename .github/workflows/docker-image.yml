@@ -41,8 +41,9 @@ jobs:
         name: Modify scripts and get version
         run: |
           ./modify.sh ${{github.event.inputs.branch}}
-          cat .version_out
-          echo ::set-output name=unms_version::$(cat .version_out)
+          ls .
+          cat ./version_out
+          echo ::set-output name=unms_version::$(cat ./version_out)
 
       - 
         name: Build and push
