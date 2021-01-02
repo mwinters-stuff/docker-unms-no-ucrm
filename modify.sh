@@ -6,7 +6,7 @@ cd docker-unms || exit 1
 
 VER=$(grep "ubnt/unms:" Dockerfile | cut -f 2 -d ' ' | cut -f 2 -d ':')
 echo "ums_version=${VER}"
-cat "${VER}" > .version_out
+
 
 CRM_UPDATE="psql -U \$UNMS_PG_USER -d \$POSTGRES_DB -c \"update crm_db_version_view set value = '$VER';\""
 rm -rf root/etc/logrotate.d/ucrm || exit 1

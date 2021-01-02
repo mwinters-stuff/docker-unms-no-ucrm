@@ -40,11 +40,12 @@ jobs:
         id: modify
         name: Modify scripts and get version
         run: |
-          ./modify.sh ${{github.event.inputs.branch}}
-          ls .
-          cat ./version_out
-          echo ::set-output name=unms_version::$(cat ./version_out)
-
+          output=$(./modify.sh ${{github.event.inputs.branch}})
+          output="${output:13}"
+          echo ::set-output name=unms_version::$output
+      -
+        name: version
+        run: echo "Version ${{steps.modify.outputs.unms_version}}"
       - 
         name: Build and push
         uses: docker/build-push-action@v2
