@@ -1,7 +1,7 @@
 #!/bin/sh
 BRANCH=$1
 
-git clone --depth=1 --single-branch --branch ${BRANCH} https://github.com/Nico640/docker-unms.git
+git clone --depth=1 --single-branch --branch ${BRANCH} https://github.com/mwinters-stuff/docker-unms.git
 cd docker-unms || exit 1
 
 VER=$(grep "ubnt/unms:" Dockerfile | cut -f 2 -d ' ' | cut -f 2 -d ':')
