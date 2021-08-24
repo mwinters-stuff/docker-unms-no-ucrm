@@ -3,10 +3,15 @@ name: Create docker image
 on:
   workflow_dispatch:
     inputs: 
+      repo:
+        description: "Repository to use"
+        required: true
+        default: "https://github.com/Nico640/docker-unms.git"
       branch:
         description: "Branch to pull"
         required: true
-        default: "testing"
+        default: "master"
+      
  
 jobs:
   buildx:
@@ -36,7 +41,7 @@ jobs:
         id: modify
         name: Modify scripts and get version
         run: |
-          output=$(./modify.sh ${{github.event.inputs.branch}})
+          output=$(./modify.sh ${{github.event.inputs.repo}}) ${{github.event.inputs.branch}})
           output="${output:12}"
           echo ::set-output name=unms_version::$output
       -
